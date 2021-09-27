@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap");
+
+:root {
+	--ff-base: "Barlow", Arial, Helvetica, sans-serif;
+	--ff-other: "Barlow Condensed", Arial, Helvetica, sans-serif;
+	--fw-400: 400;
+	--fw-700: 700;
+	--clr-primary-100: hsl(0, 100%, 68%);
+	--clr-neutral: hsl(0, 0%, 100%);
+	--clr-neutral-100: hsl(207, 33%, 95%);
+	--clr-neutral-200: hsl(231, 7%, 65%);
+	--clr-neutral-300: hsl(230, 11%, 40%);
+	--clr-neutral-400: hsl(230, 29%, 20%);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+img {
+	display: block;
+}
+
+ul[class] {
+	list-style: none;
+}
+
+a:link,
+a:visited {
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+}
+
+input,
+textarea,
+button,
+select {
+	font: inherit;
+}
+
+body,
+article,
+div,
+span,
+p,
+button,
+ul,
+dd,
+h1,
+h2,
+h3 {
+	margin: 0;
+	padding: 0;
+}
+
+/* General Styling */
+body {
+	line-height: 1.5;
+	font-size: var(--ff-base);
+	font-size: 1.125rem;
+	font-weight: var(--fw-400);
+	position: relative;
+	height: 100vh;
+	overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+nav,
+.cta {
+	font-weight: var(--fw-700);
+	font-family: var(--ff-other);
+	line-height: 1;
+}
+
+p {
+	font-weight: var(--fw-400);
+	font-family: var(--ff-other);
+	line-height: 1.2;
+}
+
+.container {
+	max-width: 70em;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.bg {
+	z-index: -1;
+	position: absolute;
+	inset: -50% -50% 50% 50%;
+	border-radius: 50px;
+	background: var(--clr-neutral-100);
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+	padding: 2em 0;
+	font-family: var(--ff-other);
+	font-weight: var(--fw-700);
+}
+
+.nav-list {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin-top: 1em;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: var(--clr-neutral);
+	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.22);
+	border-radius: 3px;
+	transform: translateY(-500%);
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+.nav-list.open {
+	transform: translateY(0);
+}
+
+.nav-list li {
+	margin: 0.5em 0;
+}
+
+.nav-list a {
+	text-transform: uppercase;
+	color: var(--clr-neutral-400);
+	padding: 0.15em;
+}
+
+.nav-list li:last-child a {
+	color: var(--clr-neutral-200);
+}
+
+.ball {
+	height: 1px;
+	width: 100%;
+	background: var(--clr-neutral-200);
+}
+
+.close-toggle {
+	display: none;
+}
+
+/* Main */
+main {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 3em;
+	padding: 2em 0;
+}
+
+main > img {
+	width: 150%;
+	margin-left: -1rem;
+}
+
+.hero-content > *:not(:last-child) {
+	margin-bottom: 1rem;
+}
+
+.hero-content span {
+	background: var(--clr-neutral-400);
+	color: var(--clr-neutral);
+	border-radius: 150vw;
+	padding: 0.25em 0.75em;
+	letter-spacing: 0;
+}
+
+.hero-content p:first-of-type {
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	color: var(--clr-neutral-200);
+}
+
+.hero-content h1 {
+	text-transform: uppercase;
+	max-width: 18ch;
+	font-size: 3rem;
+}
+
+.hero-content p:last-of-type {
+	color: var(--clr-neutral-200);
+	max-width: 35ch;
+}
+
+.hero-content .cta {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	text-transform: uppercase;
+	font-weight: var(--fw-400);
+}
+
+.cta a:first-child {
+	background: var(--clr-primary-100);
+	color: var(--clr-neutral);
+	border-radius: 4px;
+	padding: 0.5em 0.75em;
+}
+
+.cta a:last-child {
+	color: var(--clr-neutral-200);
+	letter-spacing: 2.5px;
+}
+
+@media screen and (min-width: 40em) {
+	.nav-list {
+		position: static;
+		transform: translateY(0);
+		flex-direction: row;
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		box-shadow: none;
+		gap: 3em;
+	}
+
+	.ball {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+	}
+
+	.nav-menu-toggle {
+		display: none;
+	}
+
+	.hero-content h1 {
+		font-size: 3.5rem;
+	}
+
+	.hero-content p {
+		font-size: 1.25rem;
+	}
+}
+
+@media screen and (min-width: 56.25em) {
+	main {
+		padding: 4em 0;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	main > img {
+		max-width: 150%;
+		order: 1;
+	}
+
+	.hero-content {
+		align-self: end;
+	}
+
+	.hero-content p:first-of-type {
+		margin-bottom: 1em;
+	}
+
+	.hero-content p:last-of-type {
+		margin: 2em 0;
+	}
+
+	.cta a:first-child {
+		padding: 0.75em 1em;
+	}
+}
